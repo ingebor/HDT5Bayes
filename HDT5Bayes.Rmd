@@ -22,8 +22,47 @@ Como continuación a las hojas de trabajo anteriores, trabajaremos repartiendo l
 ```{r, echo=FALSE}
 library(e1071)
 library(caret)
+library(magrittr)
+library(dplyr)
 datos <- read.csv("train.csv")
-datosCasas <- datos[,-c(1)]
+datosCasas <- datos[,-c(1,7)]
+
+#for(i in 1:ncol(datosCasas)){
+#  datosCasas[is.na(datosCasas[,i]), i] <- mean(datosCasas[,i], na.rm = TRUE)
+#}
+#Mode <- function (x, na.rm) {
+#    xtab <- table(x)
+#    xmode <- names(which(xtab == max(xtab)))
+#    if (length(xmode) > 1) xmode <- ">1 mode"
+#    return(xmode)
+#}
+
+#for (var in 1:ncol(datosCasas)) {
+#    if (class(datosCasas[,var])=="numeric") {
+#        datosCasas[is.na(datosCasas[,var]),var] <- mean(datosCasas[,var], na.rm = TRUE)
+#    } else if (class(datosCasas[,var]) %in% c("character", "factor")) {
+#        datosCasas[is.na(datosCasas[,var]),var] <- Mode(datosCasas[,var], na.rm = TRUE)
+#    }
+#}
+
+getmode <- function(v){
+  v=v[nchar(as.character(v))>0]
+  uniqv <- unique(v)
+  uniqv[which.max(tabulate(match(v, uniqv)))]
+}
+
+for (cols in colnames(datosCasas)) {
+  if (cols %in% names(datosCasas[,sapply(datosCasas, is.numeric)])) {
+    datosCasas<-datosCasas%>%mutate(!!cols := replace(!!rlang::sym(cols), is.na(!!rlang::sym(cols)), mean(!!rlang::sym(cols), na.rm=TRUE)))
+
+  }
+  else {
+
+    datosCasas<-datosCasas%>%mutate(!!cols := replace(!!rlang::sym(cols), !!rlang::sym(cols)=="", getmode(!!rlang::sym(cols))))
+
+  }
+}
+
 porciento <- 70/100
 
 datosCasas$clasificacion <- ifelse(datosCasas$SalePrice <= 251000, "Economicas", ifelse(datosCasas$SalePrice <= 538000, "Intermedias", ifelse(datosCasas$SalePrice <= 755000, "Caras")))
@@ -43,15 +82,15 @@ Con esto puede observarse que las probabilidades a priori obtenidas son: caras 0
 Es decir, la mayoría de casas se encuentra en un rango de precio de venta económico, seguido por las casas con un precio de venta intermedio y por último se encuentran aquellas con un precio de venta elevado.
 
 ```{r confmat, echo=FALSE}
-predBayes<-predict(modelo, newdata = train[,1:80])
+predBayes<-predict(modelo, newdata = train[,1:79])
 cm<-caret::confusionMatrix(predBayes,train$y)
 cm
-predBayes<-predict(modelo, newdata = test[,1:80])
+predBayes<-predict(modelo, newdata = test[,1:79])
 cm<-caret::confusionMatrix(predBayes,test$y)
 cm
 ```
 
-Según el modelo planteado, ha habido un error en la predicción de 67 casas a precio de venta económico que ha sido predicho como intermedio, 14 de precio intermedio que se han predicho como caras y 4 de precio intermedio que se han predicho como económicas. Esto quiere decir que el modelo tiene un porcentaje de acierto del 80.64% para predicir la clasificación según los precios de venta de las casas.
+Según el modelo planteado, ha habido un error en la predicción de 66 casas a precio de venta económico que ha sido predicho como intermedio, 14 de precio intermedio que se han predicho como caras y 4 de precio intermedio que se han predicho como económicas. Esto quiere decir que el modelo tiene un porcentaje de acierto del 80.87% para predicir la clasificación según los precios de venta de las casas.
 Debido a que el porcentaje no es inusualmente alto, no se cuenta con overfitting.
 
 A continuación se utilizará la validación cruzada para plantear otro modelo y comparar cuál de estos es más certero.
@@ -60,10 +99,10 @@ A continuación se utilizará la validación cruzada para plantear otro modelo y
 library(e1071)
 library(caret)
 #na.action(train)
-train[is.na(train)] <- 0
-ct<-trainControl(method = "cv",train[,1:80],number=10, verboseIter=T)
-#modeloCaret<-train(y~.,data=train,method="nb",trControl = ct)
-#prediccionCaret<-predict(modeloCaret,newdata = test[,1:81])
-#caret::confusionMatrix(prediccionCaret,test$y)
+#train[is.na(train)] <- 0
+ct<-trainControl(method = "cv",train[,1:79],number=10, verboseIter=T)
+modeloCaret<-train(y~.,data=train,method="nb",trControl = ct)
+prediccionCaret<-predict(modeloCaret,newdata = test[,1:79])
+caret::confusionMatrix(prediccionCaret,test$y)
 ```
 
