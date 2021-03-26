@@ -1,0 +1,69 @@
+---
+title: "HDT6Bayes"
+author: "Ayleen Rubio 19003, Andrés Say 19705, Andreé Toledo 18439"
+date: "25/3/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+#Ingebor Rubio/Desktop/Trabajos/Quinto Semestre/Mineria/HDT4RegresionLineal
+#C:/Users/Andree/Documents/GitHub/HDT3-ArbolesDeDecision
+
+#"C:/Users/andre/OneDrive/Documentos/HDT4RegresionLineal"
+knitr::opts_knit$set(root.dir="C:/Users/Ingebor Rubio/Desktop/Trabajos/Quinto Semestre/Mineria/HDT5Bayes")
+```
+
+# Hoja de Trabajo No. 5: Bayes Ingenuo (Naive Bayes)
+
+## Grupos con los que se trabajará  
+Como continuación a las hojas de trabajo anteriores, trabajaremos repartiendo los datos en un 70% para entrenamiento y 30% para prueba y se clasificará los precios de las casas en 3, que es lo que se busca predecir.
+
+```{r, echo=FALSE}
+library(e1071)
+library(caret)
+datos <- read.csv("train.csv")
+datosCasas <- datos[,-c(1)]
+porciento <- 70/100
+
+datosCasas$clasificacion <- ifelse(datosCasas$SalePrice <= 251000, "Economicas", ifelse(datosCasas$SalePrice <= 538000, "Intermedias", ifelse(datosCasas$SalePrice <= 755000, "Caras")))
+
+datosCasas$y <- factor(datosCasas$clasificacion)
+set.seed(123)
+trainRowsNumber<-sample(nrow(datosCasas),porciento*nrow(datosCasas))
+train<-datosCasas[trainRowsNumber,]
+test<-datosCasas[-trainRowsNumber,]
+
+modelo<-naiveBayes(train$y~., data=train)
+modelo
+
+```
+
+Con esto puede observarse que las probabilidades a priori obtenidas son: caras 0.4897%, economicas 85.01% e intermedias 14.50%.
+Es decir, la mayoría de casas se encuentra en un rango de precio de venta económico, seguido por las casas con un precio de venta intermedio y por último se encuentran aquellas con un precio de venta elevado.
+
+```{r confmat, echo=FALSE}
+predBayes<-predict(modelo, newdata = train[,1:80])
+cm<-caret::confusionMatrix(predBayes,train$y)
+cm
+predBayes<-predict(modelo, newdata = test[,1:80])
+cm<-caret::confusionMatrix(predBayes,test$y)
+cm
+```
+
+Según el modelo planteado, ha habido un error en la predicción de 67 casas a precio de venta económico que ha sido predicho como intermedio, 14 de precio intermedio que se han predicho como caras y 4 de precio intermedio que se han predicho como económicas. Esto quiere decir que el modelo tiene un porcentaje de acierto del 80.64% para predicir la clasificación según los precios de venta de las casas.
+Debido a que el porcentaje no es inusualmente alto, no se cuenta con overfitting.
+
+A continuación se utilizará la validación cruzada para plantear otro modelo y comparar cuál de estos es más certero.
+
+```{r valcr, echo=FALSE}
+library(e1071)
+library(caret)
+#na.action(train)
+train[is.na(train)] <- 0
+ct<-trainControl(method = "cv",train[,1:80],number=10, verboseIter=T)
+#modeloCaret<-train(y~.,data=train,method="nb",trControl = ct)
+#prediccionCaret<-predict(modeloCaret,newdata = test[,1:81])
+#caret::confusionMatrix(prediccionCaret,test$y)
+```
+
