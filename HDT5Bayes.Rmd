@@ -9,9 +9,10 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 #Ingebor Rubio/Desktop/Trabajos/Quinto Semestre/Mineria/HDT4RegresionLineal
 #C:/Users/Andree/Documents/GitHub/HDT3-ArbolesDeDecision
+#"C:/Users/andre/OneDrive/Documentos/HDT5Bayes"
 
 #"C:/Users/andre/OneDrive/Documentos/HDT4RegresionLineal"
-knitr::opts_knit$set(root.dir="C:/Users/Ingebor Rubio/Desktop/Trabajos/Quinto Semestre/Mineria/HDT5Bayes")
+knitr::opts_knit$set(root.dir="C:/Users/andre/OneDrive/Documentos/HDT5Bayes")
 ```
 
 # Hoja de Trabajo No. 5: Bayes Ingenuo (Naive Bayes)
@@ -63,6 +64,16 @@ for (cols in colnames(datosCasas)) {
   }
 }
 
+datosCasas <- datosCasas[,-29]
+datosCasas <- datosCasas[,-29]
+datosCasas <- datosCasas[,-29]
+datosCasas <- datosCasas[,-29]
+datosCasas <- datosCasas[,-30]
+datosCasas <- datosCasas[,-24]
+#View(datosCasas)
+
+
+
 porciento <- 70/100
 
 datosCasas$clasificacion <- ifelse(datosCasas$SalePrice <= 251000, "Economicas", ifelse(datosCasas$SalePrice <= 538000, "Intermedias", ifelse(datosCasas$SalePrice <= 755000, "Caras")))
@@ -82,10 +93,10 @@ Con esto puede observarse que las probabilidades a priori obtenidas son: caras 0
 Es decir, la mayoría de casas se encuentra en un rango de precio de venta económico, seguido por las casas con un precio de venta intermedio y por último se encuentran aquellas con un precio de venta elevado.
 
 ```{r confmat, echo=FALSE}
-predBayes<-predict(modelo, newdata = train[,1:79])
+predBayes<-predict(modelo, newdata = train[,1:50])
 cm<-caret::confusionMatrix(predBayes,train$y)
 cm
-predBayes<-predict(modelo, newdata = test[,1:79])
+predBayes<-predict(modelo, newdata = test[,1:50])
 cm<-caret::confusionMatrix(predBayes,test$y)
 cm
 ```
@@ -98,11 +109,11 @@ A continuación se utilizará la validación cruzada para plantear otro modelo y
 ```{r valcr, echo=FALSE}
 library(e1071)
 library(caret)
-#na.action(train)
-#train[is.na(train)] <- 0
-ct<-trainControl(method = "cv",train[,1:79],number=10, verboseIter=T)
+na.action(train)
+train[is.na(train)] <- 0
+ct<-trainControl(method = "cv",train[,1:50],number=10, verboseIter=T)
 modeloCaret<-train(y~.,data=train,method="nb",trControl = ct)
-prediccionCaret<-predict(modeloCaret,newdata = test[,1:79])
+prediccionCaret<-predict(modeloCaret,newdata = test[,1:50])
 caret::confusionMatrix(prediccionCaret,test$y)
 ```
 
