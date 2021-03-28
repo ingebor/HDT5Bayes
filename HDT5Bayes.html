@@ -200,9 +200,18 @@ summary {
 <div id="grupos-con-los-que-se-trabajará" class="section level2">
 <h2>Grupos con los que se trabajará</h2>
 <p>Como continuación a las hojas de trabajo anteriores, trabajaremos repartiendo los datos en un 70% para entrenamiento y 30% para prueba y se clasificará los precios de las casas en 3, que es lo que se busca predecir.</p>
+<pre><code>## Warning: package &#39;e1071&#39; was built under R version 4.0.4</code></pre>
 <pre><code>## Warning: package &#39;caret&#39; was built under R version 4.0.4</code></pre>
 <pre><code>## Loading required package: lattice</code></pre>
 <pre><code>## Loading required package: ggplot2</code></pre>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
 <pre><code>## 
 ## Naive Bayes Classifier for Discrete Predictors
 ## 
@@ -230,8 +239,8 @@ summary {
 ##              LotFrontage
 ## Y                  [,1]     [,2]
 ##   Caras       110.80000 28.64786
-##   Economicas   67.64275 22.52496
-##   Intermedias  84.72868 22.47768
+##   Economicas   68.11698 20.20448
+##   Intermedias  82.84425 21.54568
 ## 
 ##              LotArea
 ## Y                  [,1]      [,2]
@@ -244,12 +253,6 @@ summary {
 ##   Caras       0.000000000 1.000000000
 ##   Economicas  0.003456221 0.996543779
 ##   Intermedias 0.000000000 1.000000000
-## 
-##              Alley
-## Y                  Grvl      Pave
-##   Caras                          
-##   Economicas  0.5614035 0.4385965
-##   Intermedias 1.0000000 0.0000000
 ## 
 ##              LotShape
 ## Y                     IR1         IR2         IR3         Reg
@@ -433,7 +436,7 @@ summary {
 ##              MasVnrArea
 ## Y                  [,1]     [,2]
 ##   Caras       467.60000 483.8686
-##   Economicas   72.07317 144.6394
+##   Economicas   72.32811 144.0821
 ##   Intermedias 250.63514 232.8741
 ## 
 ##              ExterQual
@@ -656,7 +659,7 @@ summary {
 ##              GarageYrBlt
 ## Y                 [,1]     [,2]
 ##   Caras       2002.400  6.94982
-##   Economicas  1975.805 23.83040
+##   Economicas  1975.985 23.02940
 ##   Intermedias 1997.155 15.97690
 ## 
 ##              GarageFinish
@@ -806,67 +809,63 @@ summary {
 ##              Reference
 ## Prediction    Caras Economicas Intermedias
 ##   Caras           5          0          39
-##   Economicas      0        700           3
-##   Intermedias     0        168         106
+##   Economicas      0        695           3
+##   Intermedias     0        173         106
 ## 
 ## Overall Statistics
 ##                                           
-##                Accuracy : 0.7943          
-##                  95% CI : (0.7682, 0.8187)
+##                Accuracy : 0.7894          
+##                  95% CI : (0.7631, 0.8141)
 ##     No Information Rate : 0.8501          
 ##     P-Value [Acc &gt; NIR] : 1               
 ##                                           
-##                   Kappa : 0.4523          
+##                   Kappa : 0.4444          
 ##                                           
 ##  Mcnemar&#39;s Test P-Value : NA              
 ## 
 ## Statistics by Class:
 ## 
 ##                      Class: Caras Class: Economicas Class: Intermedias
-## Sensitivity              1.000000            0.8065             0.7162
-## Specificity              0.961614            0.9804             0.8076
-## Pos Pred Value           0.113636            0.9957             0.3869
-## Neg Pred Value           1.000000            0.4717             0.9438
+## Sensitivity              1.000000            0.8007             0.7162
+## Specificity              0.961614            0.9804             0.8018
+## Pos Pred Value           0.113636            0.9957             0.3799
+## Neg Pred Value           1.000000            0.4644             0.9434
 ## Prevalence               0.004897            0.8501             0.1450
-## Detection Rate           0.004897            0.6856             0.1038
-## Detection Prevalence     0.043095            0.6885             0.2684
-## Balanced Accuracy        0.980807            0.8934             0.7619</code></pre>
+## Detection Rate           0.004897            0.6807             0.1038
+## Detection Prevalence     0.043095            0.6836             0.2733
+## Balanced Accuracy        0.980807            0.8905             0.7590</code></pre>
 <pre><code>## Confusion Matrix and Statistics
 ## 
 ##              Reference
 ## Prediction    Caras Economicas Intermedias
 ##   Caras           2          0          14
-##   Economicas      0        310           4
-##   Intermedias     0         67          42
+##   Economicas      0        311           4
+##   Intermedias     0         66          42
 ## 
 ## Overall Statistics
 ##                                           
-##                Accuracy : 0.8064          
-##                  95% CI : (0.7663, 0.8423)
+##                Accuracy : 0.8087          
+##                  95% CI : (0.7687, 0.8444)
 ##     No Information Rate : 0.8588          
-##     P-Value [Acc &gt; NIR] : 0.999           
+##     P-Value [Acc &gt; NIR] : 0.9985          
 ##                                           
-##                   Kappa : 0.4494          
+##                   Kappa : 0.4533          
 ##                                           
 ##  Mcnemar&#39;s Test P-Value : NA              
 ## 
 ## Statistics by Class:
 ## 
 ##                      Class: Caras Class: Economicas Class: Intermedias
-## Sensitivity              1.000000            0.8223            0.70000
-## Specificity              0.967963            0.9355            0.82322
-## Pos Pred Value           0.125000            0.9873            0.38532
-## Neg Pred Value           1.000000            0.4640            0.94545
+## Sensitivity              1.000000            0.8249            0.70000
+## Specificity              0.967963            0.9355            0.82586
+## Pos Pred Value           0.125000            0.9873            0.38889
+## Neg Pred Value           1.000000            0.4677            0.94562
 ## Prevalence               0.004556            0.8588            0.13667
-## Detection Rate           0.004556            0.7062            0.09567
-## Detection Prevalence     0.036446            0.7153            0.24829
-## Balanced Accuracy        0.983982            0.8789            0.76161</code></pre>
-<p>Según el modelo planteado, ha habido un error en la predicción de 67 casas a precio de venta económico que ha sido predicho como intermedio, 14 de precio intermedio que se han predicho como caras y 4 de precio intermedio que se han predicho como económicas. Esto quiere decir que el modelo tiene un porcentaje de acierto del 80.64% para predicir la clasificación según los precios de venta de las casas. Debido a que el porcentaje no es inusualmente alto, no se cuenta con overfitting.</p>
+## Detection Rate           0.004556            0.7084            0.09567
+## Detection Prevalence     0.036446            0.7175            0.24601
+## Balanced Accuracy        0.983982            0.8802            0.76293</code></pre>
+<p>Según el modelo planteado, ha habido un error en la predicción de 66 casas a precio de venta económico que ha sido predicho como intermedio, 14 de precio intermedio que se han predicho como caras y 4 de precio intermedio que se han predicho como económicas. Esto quiere decir que el modelo tiene un porcentaje de acierto del 80.87% para predicir la clasificación según los precios de venta de las casas. Debido a que el porcentaje no es inusualmente alto, no se cuenta con overfitting.</p>
 <p>A continuación se utilizará la validación cruzada para plantear otro modelo y comparar cuál de estos es más certero.</p>
-<pre><code>## Warning in if (!is.na(repeats) &amp; !(method %in% c(&quot;repeatedcv&quot;, &quot;adaptive_cv&quot;)))
-## warning(&quot;`repeats` has no meaning for this resampling method.&quot;, : la condición
-## tiene longitud &gt; 1 y sólo el primer elemento será usado</code></pre>
-<pre><code>## Warning: `repeats` has no meaning for this resampling method.</code></pre>
 </div>
 </div>
 
