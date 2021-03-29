@@ -149,3 +149,17 @@ A continuación se utilizará la validación cruzada para plantear otro modelo y
 #caret::confusionMatrix(prediccionCaret,test$y)
 #```
 
+## LIMPIEZA DE DATOS PARA USO EN BAYES
+``` {r limpieza, echo=FALSE }
+datosCasas <- read.csv("train.csv",TRUE,",")
+
+datos <- read.csv("train.csv",TRUE,",")
+
+datosCasas[is.na(datosCasas)] = "NO"
+
+datos[is.na(datos)] = "NO"
+
+datos <- select(datos,LotArea,TotalBsmtSF,X1stFlrSF,X2ndFlrSF,WoodDeckSF,OpenPorchSF,
+                EnclosedPorch,X3SsnPorch,ScreenPorch,PoolArea,MiscVal,SalePrice)
+scaledData <- as.matrix(scale(datos))
+```
