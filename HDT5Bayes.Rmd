@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 #"C:/Users/andre/OneDrive/Documentos/HDT5Bayes"
 
 #"C:/Users/andre/OneDrive/Documentos/HDT4RegresionLineal"
-knitr::opts_knit$set(root.dir="C:/Users/andre/OneDrive/Documentos/HDT5Bayes")
+knitr::opts_knit$set(root.dir="C:/Users/Andree/Documents/GitHub/HDT5Bayes")
 ```
 
 # Hoja de Trabajo No. 5: Bayes Ingenuo (Naive Bayes)
@@ -20,11 +20,43 @@ knitr::opts_knit$set(root.dir="C:/Users/andre/OneDrive/Documentos/HDT5Bayes")
 ## Grupos con los que se trabajará  
 Como continuación a las hojas de trabajo anteriores, trabajaremos repartiendo los datos en un 70% para entrenamiento y 30% para prueba y se clasificará los precios de las casas en 3, que es lo que se busca predecir.
 
+
 ```{r, echo=FALSE}
 library(e1071)
 library(caret)
 library(magrittr)
 library(dplyr)
+
+library(plyr)
+library(dplyr)
+library(cluster)
+library(e1071)
+library(mclust)
+
+library(fpc)
+library(NbClust)
+library(factoextra)
+library(tidyverse)
+library(readr)
+
+library(ppclust)
+library(randomForest)
+library(ggplot2)
+library(broom)
+library(ggpubr)
+
+library(corrplot)
+library(mctest)
+library(caret)
+library(Amelia)
+
+library(caretEnsemble)
+library(psych)
+library(mice)
+library(GGally)
+library(rpart)
+library(e1071)
+
 datos <- read.csv("train.csv")
 datosCasas <- datos[,-c(1,7)]
 
@@ -106,14 +138,14 @@ Debido a que el porcentaje no es inusualmente alto, no se cuenta con overfitting
 
 A continuación se utilizará la validación cruzada para plantear otro modelo y comparar cuál de estos es más certero.
 
-```{r valcr, echo=FALSE}
-library(e1071)
-library(caret)
-na.action(train)
-train[is.na(train)] <- 0
-ct<-trainControl(method = "cv",train[,1:50],number=10, verboseIter=T)
-modeloCaret<-train(y~.,data=train,method="nb",trControl = ct)
-prediccionCaret<-predict(modeloCaret,newdata = test[,1:50])
-caret::confusionMatrix(prediccionCaret,test$y)
-```
+#```{r valcr, echo=FALSE}
+#library(e1071)
+#library(caret)
+#na.action(train)
+#train[is.na(train)] <- 0
+#ct<-trainControl(method = "cv",train[,1:50],number=10, verboseIter=T)
+#modeloCaret<-train(y~.,data=train,method="nb",trControl = ct)
+#prediccionCaret<-predict(modeloCaret,newdata = test[,1:50])
+#caret::confusionMatrix(prediccionCaret,test$y)
+#```
 
