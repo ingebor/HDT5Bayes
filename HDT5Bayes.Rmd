@@ -178,4 +178,13 @@ set.seed(12345)
 # Definir Variable SalePrice como categorica
 datosCasas$Group <- factor(datosCasas$Group,levels=c(1,2,3),labels=c("Barata","Media","Cara"))
 ```
-### S
+
+### Separacion de los grupos, prueba y entrenamiento
+``` {r }
+set.seed(123)
+indxTrain <- createDataPartition(y = datosCasas$Group,p = 0.7,list = FALSE)
+trainingSet <- datosCasas[indxTrain,]
+testingSet <- datosCasas[-indxTrain,]
+# Separacion de variable Group (casas baratas, medias y caras)
+prop.table(table(trainingSet$Group)) * 100
+```
