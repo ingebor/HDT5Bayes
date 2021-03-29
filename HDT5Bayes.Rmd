@@ -102,6 +102,7 @@ datosCasas <- datosCasas[,-29]
 datosCasas <- datosCasas[,-29]
 datosCasas <- datosCasas[,-30]
 datosCasas <- datosCasas[,-24]
+datosCasas <- datosCasas[,-50]
 #View(datosCasas)
 
 
@@ -125,10 +126,10 @@ Con esto puede observarse que las probabilidades a priori obtenidas son: caras 0
 Es decir, la mayoría de casas se encuentra en un rango de precio de venta económico, seguido por las casas con un precio de venta intermedio y por último se encuentran aquellas con un precio de venta elevado.
 
 ```{r confmat, echo=FALSE}
-predBayes<-predict(modelo, newdata = train[,1:50])
+predBayes<-predict(modelo, newdata = train[,1:49])
 cm<-caret::confusionMatrix(predBayes,train$y)
 cm
-predBayes<-predict(modelo, newdata = test[,1:50])
+predBayes<-predict(modelo, newdata = test[,1:49])
 cm<-caret::confusionMatrix(predBayes,test$y)
 cm
 ```
@@ -138,16 +139,21 @@ Debido a que el porcentaje no es inusualmente alto, no se cuenta con overfitting
 
 A continuación se utilizará la validación cruzada para plantear otro modelo y comparar cuál de estos es más certero.
 
-#```{r valcr, echo=FALSE}
-#library(e1071)
-#library(caret)
+```{r valcr, echo=FALSE}
+library(e1071)
+library(caret)
 #na.action(train)
 #train[is.na(train)] <- 0
-#ct<-trainControl(method = "cv",train[,1:50],number=10, verboseIter=T)
+#ct<-trainControl(method = "cv",train[,1:49],number=10, verboseIter=T)
 #modeloCaret<-train(y~.,data=train,method="nb",trControl = ct)
-#prediccionCaret<-predict(modeloCaret,newdata = test[,1:50])
+#prediccionCaret<-predict(modeloCaret,newdata = test[,1:49])
 #caret::confusionMatrix(prediccionCaret,test$y)
-#```
+#Prueba 2
+ct <- trainControl(method = "cv", verboseIter = T)
+modeloCaret <- train(train$clasificacion~.,data = train, method = "nb", trControl = ct)
+prediccionCaret <- predict(modeloCaret, newdata = test[,1:49])
+cmc <- caret::confusionMatrix(prediccionCaret,test$clasificacion)
+```
 
 ## LIMPIEZA DE DATOS PARA USO EN BAYES
 ``` {r limpieza, echo=FALSE }
@@ -212,5 +218,5 @@ debido a que el modelo tiene un accuracy de0.8087 entonces no existen problemas 
 
 
 ## COMPARACIÓN
-Basandonos en el accuracy de la hoja 3 (del árbol de clasificación), es mejor el árbol de clasificación al algoritmo de Bayes. Además en términos de procesamiento, ambos duraron casi la misma cantidad de tiempo, por lo tanto, es mejor el algoritmo del árbol de clasificación al de Bayes.
+Basandonos en el accuracy de la hoja 3 (del árbol de clasificación), es mejor el árbol de clasificación al algoritmo de Bayes (0.467. Además en términos de procesamiento, ambos duraron casi la misma cantidad de tiempo, por lo tanto, es mejor el algoritmo del árbol de clasificación al de Bayes.
 
