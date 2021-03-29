@@ -679,12 +679,6 @@ summary {
 ##   Economicas  0.5195853 0.6341557
 ##   Intermedias 1.1486486 0.4860624
 ## 
-##              FireplaceQu
-## Y                      Ex          Fa          Gd          Po          TA
-##   Caras       0.200000000 0.000000000 0.600000000 0.000000000 0.200000000
-##   Economicas  0.002577320 0.048969072 0.448453608 0.038659794 0.461340206
-##   Intermedias 0.112676056 0.007042254 0.563380282 0.000000000 0.316901408
-## 
 ##              GarageType
 ## Y                  2Types      Attchd     Basment     BuiltIn     CarPort
 ##   Caras       0.000000000 0.800000000 0.000000000 0.200000000 0.000000000
@@ -844,43 +838,43 @@ summary {
 ##   Economicas      0          1           0
 ##   Intermedias     0          0           1</code></pre>
 <p>Con esto puede observarse que las probabilidades a priori obtenidas son: caras 0.4897%, economicas 85.01% e intermedias 14.50%. Es decir, la mayoría de casas se encuentra en un rango de precio de venta económico, seguido por las casas con un precio de venta intermedio y por último se encuentran aquellas con un precio de venta elevado.</p>
-<pre><code>## Warning in predict.naiveBayes(modelo, newdata = train[, 1:50]): Type mismatch
+<pre><code>## Warning in predict.naiveBayes(modelo, newdata = train[, 1:49]): Type mismatch
 ## between training and new data for variable &#39;GarageYrBlt&#39;. Did you use factors
 ## with numeric labels for training, and numeric values for new data?</code></pre>
-<pre><code>## Warning in predict.naiveBayes(modelo, newdata = train[, 1:50]): Type mismatch
+<pre><code>## Warning in predict.naiveBayes(modelo, newdata = train[, 1:49]): Type mismatch
 ## between training and new data for variable &#39;GarageCars&#39;. Did you use factors
 ## with numeric labels for training, and numeric values for new data?</code></pre>
-<pre><code>## Warning in predict.naiveBayes(modelo, newdata = train[, 1:50]): Type mismatch
+<pre><code>## Warning in predict.naiveBayes(modelo, newdata = train[, 1:49]): Type mismatch
 ## between training and new data for variable &#39;GarageArea&#39;. Did you use factors
 ## with numeric labels for training, and numeric values for new data?</code></pre>
-<pre><code>## Warning in predict.naiveBayes(modelo, newdata = train[, 1:50]): Type mismatch
+<pre><code>## Warning in predict.naiveBayes(modelo, newdata = train[, 1:49]): Type mismatch
 ## between training and new data for variable &#39;WoodDeckSF&#39;. Did you use factors
 ## with numeric labels for training, and numeric values for new data?</code></pre>
-<pre><code>## Warning in predict.naiveBayes(modelo, newdata = train[, 1:50]): Type mismatch
+<pre><code>## Warning in predict.naiveBayes(modelo, newdata = train[, 1:49]): Type mismatch
 ## between training and new data for variable &#39;OpenPorchSF&#39;. Did you use factors
 ## with numeric labels for training, and numeric values for new data?</code></pre>
-<pre><code>## Warning in predict.naiveBayes(modelo, newdata = train[, 1:50]): Type mismatch
+<pre><code>## Warning in predict.naiveBayes(modelo, newdata = train[, 1:49]): Type mismatch
 ## between training and new data for variable &#39;EnclosedPorch&#39;. Did you use factors
 ## with numeric labels for training, and numeric values for new data?</code></pre>
-<pre><code>## Warning in predict.naiveBayes(modelo, newdata = train[, 1:50]): Type mismatch
+<pre><code>## Warning in predict.naiveBayes(modelo, newdata = train[, 1:49]): Type mismatch
 ## between training and new data for variable &#39;X3SsnPorch&#39;. Did you use factors
 ## with numeric labels for training, and numeric values for new data?</code></pre>
-<pre><code>## Warning in predict.naiveBayes(modelo, newdata = train[, 1:50]): Type mismatch
+<pre><code>## Warning in predict.naiveBayes(modelo, newdata = train[, 1:49]): Type mismatch
 ## between training and new data for variable &#39;ScreenPorch&#39;. Did you use factors
 ## with numeric labels for training, and numeric values for new data?</code></pre>
-<pre><code>## Warning in predict.naiveBayes(modelo, newdata = train[, 1:50]): Type mismatch
+<pre><code>## Warning in predict.naiveBayes(modelo, newdata = train[, 1:49]): Type mismatch
 ## between training and new data for variable &#39;PoolArea&#39;. Did you use factors with
 ## numeric labels for training, and numeric values for new data?</code></pre>
-<pre><code>## Warning in predict.naiveBayes(modelo, newdata = train[, 1:50]): Type mismatch
+<pre><code>## Warning in predict.naiveBayes(modelo, newdata = train[, 1:49]): Type mismatch
 ## between training and new data for variable &#39;MiscVal&#39;. Did you use factors with
 ## numeric labels for training, and numeric values for new data?</code></pre>
-<pre><code>## Warning in predict.naiveBayes(modelo, newdata = train[, 1:50]): Type mismatch
+<pre><code>## Warning in predict.naiveBayes(modelo, newdata = train[, 1:49]): Type mismatch
 ## between training and new data for variable &#39;MoSold&#39;. Did you use factors with
 ## numeric labels for training, and numeric values for new data?</code></pre>
-<pre><code>## Warning in predict.naiveBayes(modelo, newdata = train[, 1:50]): Type mismatch
+<pre><code>## Warning in predict.naiveBayes(modelo, newdata = train[, 1:49]): Type mismatch
 ## between training and new data for variable &#39;YrSold&#39;. Did you use factors with
 ## numeric labels for training, and numeric values for new data?</code></pre>
-<pre><code>## Warning in predict.naiveBayes(modelo, newdata = train[, 1:50]): Type mismatch
+<pre><code>## Warning in predict.naiveBayes(modelo, newdata = train[, 1:49]): Type mismatch
 ## between training and new data for variable &#39;SalePrice&#39;. Did you use factors with
 ## numeric labels for training, and numeric values for new data?</code></pre>
 <pre><code>## Confusion Matrix and Statistics
@@ -913,43 +907,43 @@ summary {
 ## Detection Rate           0.004897            0.6660             0.1352
 ## Detection Prevalence     0.012733            0.6690             0.3183
 ## Balanced Accuracy        0.996063            0.8819             0.8591</code></pre>
-<pre><code>## Warning in predict.naiveBayes(modelo, newdata = test[, 1:50]): Type mismatch
+<pre><code>## Warning in predict.naiveBayes(modelo, newdata = test[, 1:49]): Type mismatch
 ## between training and new data for variable &#39;GarageYrBlt&#39;. Did you use factors
 ## with numeric labels for training, and numeric values for new data?</code></pre>
-<pre><code>## Warning in predict.naiveBayes(modelo, newdata = test[, 1:50]): Type mismatch
+<pre><code>## Warning in predict.naiveBayes(modelo, newdata = test[, 1:49]): Type mismatch
 ## between training and new data for variable &#39;GarageCars&#39;. Did you use factors
 ## with numeric labels for training, and numeric values for new data?</code></pre>
-<pre><code>## Warning in predict.naiveBayes(modelo, newdata = test[, 1:50]): Type mismatch
+<pre><code>## Warning in predict.naiveBayes(modelo, newdata = test[, 1:49]): Type mismatch
 ## between training and new data for variable &#39;GarageArea&#39;. Did you use factors
 ## with numeric labels for training, and numeric values for new data?</code></pre>
-<pre><code>## Warning in predict.naiveBayes(modelo, newdata = test[, 1:50]): Type mismatch
+<pre><code>## Warning in predict.naiveBayes(modelo, newdata = test[, 1:49]): Type mismatch
 ## between training and new data for variable &#39;WoodDeckSF&#39;. Did you use factors
 ## with numeric labels for training, and numeric values for new data?</code></pre>
-<pre><code>## Warning in predict.naiveBayes(modelo, newdata = test[, 1:50]): Type mismatch
+<pre><code>## Warning in predict.naiveBayes(modelo, newdata = test[, 1:49]): Type mismatch
 ## between training and new data for variable &#39;OpenPorchSF&#39;. Did you use factors
 ## with numeric labels for training, and numeric values for new data?</code></pre>
-<pre><code>## Warning in predict.naiveBayes(modelo, newdata = test[, 1:50]): Type mismatch
+<pre><code>## Warning in predict.naiveBayes(modelo, newdata = test[, 1:49]): Type mismatch
 ## between training and new data for variable &#39;EnclosedPorch&#39;. Did you use factors
 ## with numeric labels for training, and numeric values for new data?</code></pre>
-<pre><code>## Warning in predict.naiveBayes(modelo, newdata = test[, 1:50]): Type mismatch
+<pre><code>## Warning in predict.naiveBayes(modelo, newdata = test[, 1:49]): Type mismatch
 ## between training and new data for variable &#39;X3SsnPorch&#39;. Did you use factors
 ## with numeric labels for training, and numeric values for new data?</code></pre>
-<pre><code>## Warning in predict.naiveBayes(modelo, newdata = test[, 1:50]): Type mismatch
+<pre><code>## Warning in predict.naiveBayes(modelo, newdata = test[, 1:49]): Type mismatch
 ## between training and new data for variable &#39;ScreenPorch&#39;. Did you use factors
 ## with numeric labels for training, and numeric values for new data?</code></pre>
-<pre><code>## Warning in predict.naiveBayes(modelo, newdata = test[, 1:50]): Type mismatch
+<pre><code>## Warning in predict.naiveBayes(modelo, newdata = test[, 1:49]): Type mismatch
 ## between training and new data for variable &#39;PoolArea&#39;. Did you use factors with
 ## numeric labels for training, and numeric values for new data?</code></pre>
-<pre><code>## Warning in predict.naiveBayes(modelo, newdata = test[, 1:50]): Type mismatch
+<pre><code>## Warning in predict.naiveBayes(modelo, newdata = test[, 1:49]): Type mismatch
 ## between training and new data for variable &#39;MiscVal&#39;. Did you use factors with
 ## numeric labels for training, and numeric values for new data?</code></pre>
-<pre><code>## Warning in predict.naiveBayes(modelo, newdata = test[, 1:50]): Type mismatch
+<pre><code>## Warning in predict.naiveBayes(modelo, newdata = test[, 1:49]): Type mismatch
 ## between training and new data for variable &#39;MoSold&#39;. Did you use factors with
 ## numeric labels for training, and numeric values for new data?</code></pre>
-<pre><code>## Warning in predict.naiveBayes(modelo, newdata = test[, 1:50]): Type mismatch
+<pre><code>## Warning in predict.naiveBayes(modelo, newdata = test[, 1:49]): Type mismatch
 ## between training and new data for variable &#39;YrSold&#39;. Did you use factors with
 ## numeric labels for training, and numeric values for new data?</code></pre>
-<pre><code>## Warning in predict.naiveBayes(modelo, newdata = test[, 1:50]): Type mismatch
+<pre><code>## Warning in predict.naiveBayes(modelo, newdata = test[, 1:49]): Type mismatch
 ## between training and new data for variable &#39;SalePrice&#39;. Did you use factors with
 ## numeric labels for training, and numeric values for new data?</code></pre>
 <pre><code>## Confusion Matrix and Statistics
@@ -957,34 +951,34 @@ summary {
 ##              Reference
 ## Prediction    Caras Economicas Intermedias
 ##   Caras           1          0           5
-##   Economicas      0        302           3
-##   Intermedias     1         75          52
+##   Economicas      0        303           3
+##   Intermedias     1         74          52
 ## 
 ## Overall Statistics
 ##                                           
-##                Accuracy : 0.8087          
-##                  95% CI : (0.7687, 0.8444)
+##                Accuracy : 0.8109          
+##                  95% CI : (0.7711, 0.8465)
 ##     No Information Rate : 0.8588          
-##     P-Value [Acc &gt; NIR] : 0.9985          
+##     P-Value [Acc &gt; NIR] : 0.9977          
 ##                                           
-##                   Kappa : 0.4735          
+##                   Kappa : 0.4774          
 ##                                           
 ##  Mcnemar&#39;s Test P-Value : NA              
 ## 
 ## Statistics by Class:
 ## 
 ##                      Class: Caras Class: Economicas Class: Intermedias
-## Sensitivity              0.500000            0.8011             0.8667
-## Specificity              0.988558            0.9516             0.7995
-## Pos Pred Value           0.166667            0.9902             0.4062
-## Neg Pred Value           0.997691            0.4403             0.9743
+## Sensitivity              0.500000            0.8037             0.8667
+## Specificity              0.988558            0.9516             0.8021
+## Pos Pred Value           0.166667            0.9902             0.4094
+## Neg Pred Value           0.997691            0.4436             0.9744
 ## Prevalence               0.004556            0.8588             0.1367
-## Detection Rate           0.002278            0.6879             0.1185
-## Detection Prevalence     0.013667            0.6948             0.2916
-## Balanced Accuracy        0.744279            0.8763             0.8331</code></pre>
+## Detection Rate           0.002278            0.6902             0.1185
+## Detection Prevalence     0.013667            0.6970             0.2893
+## Balanced Accuracy        0.744279            0.8777             0.8344</code></pre>
 <p>Según el modelo planteado, ha habido un error en la predicción de 66 casas a precio de venta económico que ha sido predicho como intermedio, 14 de precio intermedio que se han predicho como caras y 4 de precio intermedio que se han predicho como económicas. Esto quiere decir que el modelo tiene un porcentaje de acierto del 80.87% para predicir la clasificación según los precios de venta de las casas. Debido a que el porcentaje no es inusualmente alto, no se cuenta con overfitting.</p>
 <p>A continuación se utilizará la validación cruzada para plantear otro modelo y comparar cuál de estos es más certero.</p>
-<p>#<code>{r valcr, echo=FALSE} #library(e1071) #library(caret) #na.action(train) #train[is.na(train)] &lt;- 0 #ct&lt;-trainControl(method = &quot;cv&quot;,train[,1:50],number=10, verboseIter=T) #modeloCaret&lt;-train(y~.,data=train,method=&quot;nb&quot;,trControl = ct) #prediccionCaret&lt;-predict(modeloCaret,newdata = test[,1:50]) #caret::confusionMatrix(prediccionCaret,test$y) #</code></p>
+<p>#<code>{r valcr, echo=FALSE} #library(e1071) #library(caret) #na.action(train) #train[is.na(train)] &lt;- 0 #ct&lt;-trainControl(method = &quot;cv&quot;,train[,1:49],number=10, verboseIter=T) #modeloCaret&lt;-train(y~.,data=train,method=&quot;nb&quot;,trControl = ct) #prediccionCaret&lt;-predict(modeloCaret,newdata = test[,1:49]) #caret::confusionMatrix(prediccionCaret,test$y) #Prueba 2 #ct &lt;- trainControl(method = &quot;cv&quot;, verboseIter = T) #modeloCaret &lt;- train(train$clasificacion~.,data = train, method = &quot;nb&quot;, trControl = ct) #prediccionCaret &lt;- predict(modeloCaret, newdata = test[,1:49]) #cmc &lt;- caret::confusionMatrix(prediccionCaret,test$clasificacion) #</code></p>
 </div>
 <div id="limpieza-de-datos-para-uso-en-bayes" class="section level2">
 <h2>LIMPIEZA DE DATOS PARA USO EN BAYES</h2>
@@ -1133,7 +1127,7 @@ prop.table(table(trainingSet$Group)) * 100</code></pre>
 </div>
 <div id="comparación" class="section level2">
 <h2>COMPARACIÓN</h2>
-<p>Basandonos en el accuracy de la hoja 3 (del árbol de clasificación), es mejor el árbol de clasificación al algoritmo de Bayes. Además en términos de procesamiento, ambos duraron casi la misma cantidad de tiempo, por lo tanto, es mejor el algoritmo del árbol de clasificación al de Bayes.</p>
+<p>Basandonos en el accuracy de la hoja 3 (del árbol de clasificación), es mejor el árbol de clasificación al algoritmo de Bayes (0.467). Además en términos de procesamiento, ambos duraron casi la misma cantidad de tiempo, por lo tanto, es mejor el algoritmo del árbol de clasificación al de Bayes.</p>
 </div>
 </div>
 
