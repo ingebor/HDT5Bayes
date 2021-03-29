@@ -139,9 +139,9 @@ Debido a que el porcentaje no es inusualmente alto, no se cuenta con overfitting
 
 A continuación se utilizará la validación cruzada para plantear otro modelo y comparar cuál de estos es más certero.
 
-```{r valcr, echo=FALSE}
-library(e1071)
-library(caret)
+#```{r valcr, echo=FALSE}
+#library(e1071)
+#library(caret)
 #na.action(train)
 #train[is.na(train)] <- 0
 #ct<-trainControl(method = "cv",train[,1:49],number=10, verboseIter=T)
@@ -149,11 +149,11 @@ library(caret)
 #prediccionCaret<-predict(modeloCaret,newdata = test[,1:49])
 #caret::confusionMatrix(prediccionCaret,test$y)
 #Prueba 2
-ct <- trainControl(method = "cv", verboseIter = T)
-modeloCaret <- train(train$clasificacion~.,data = train, method = "nb", trControl = ct)
-prediccionCaret <- predict(modeloCaret, newdata = test[,1:49])
-cmc <- caret::confusionMatrix(prediccionCaret,test$clasificacion)
-```
+#ct <- trainControl(method = "cv", verboseIter = T)
+#modeloCaret <- train(train$clasificacion~.,data = train, method = "nb", trControl = ct)
+#prediccionCaret <- predict(modeloCaret, newdata = test[,1:49])
+#cmc <- caret::confusionMatrix(prediccionCaret,test$clasificacion)
+#```
 
 ## LIMPIEZA DE DATOS PARA USO EN BAYES
 ``` {r limpieza, echo=FALSE }
@@ -218,5 +218,5 @@ debido a que el modelo tiene un accuracy de0.8087 entonces no existen problemas 
 
 
 ## COMPARACIÓN
-Basandonos en el accuracy de la hoja 3 (del árbol de clasificación), es mejor el árbol de clasificación al algoritmo de Bayes (0.467. Además en términos de procesamiento, ambos duraron casi la misma cantidad de tiempo, por lo tanto, es mejor el algoritmo del árbol de clasificación al de Bayes.
+Basandonos en el accuracy de la hoja 3 (del árbol de clasificación), es mejor el árbol de clasificación al algoritmo de Bayes (0.467). Además en términos de procesamiento, ambos duraron casi la misma cantidad de tiempo, por lo tanto, es mejor el algoritmo del árbol de clasificación al de Bayes.
 
