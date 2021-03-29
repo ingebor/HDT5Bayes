@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 #"C:/Users/andre/OneDrive/Documentos/HDT5Bayes"
 
 #"C:/Users/andre/OneDrive/Documentos/HDT4RegresionLineal"
-knitr::opts_knit$set(root.dir="C:/Users/Andree/Documents/GitHub/HDT5Bayes")
+knitr::opts_knit$set(root.dir="C:/Users/andre/OneDrive/Documentos/HDT5Bayes")
 ```
 
 # Hoja de Trabajo No. 5: Bayes Ingenuo (Naive Bayes)
@@ -206,3 +206,10 @@ cm <- table(trainingSet$Group,predicter)
 # Matriz de confusion
 confusionMatrix(cm)
 ```
+
+## OVERFITTING
+debido a que el modelo tiene un accuracy de0.8087 entonces no existen problemas de overfitting
+
+
+
+
