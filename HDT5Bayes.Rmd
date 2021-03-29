@@ -163,3 +163,9 @@ datos <- select(datos,LotArea,TotalBsmtSF,X1stFlrSF,X2ndFlrSF,WoodDeckSF,OpenPor
                 EnclosedPorch,X3SsnPorch,ScreenPorch,PoolArea,MiscVal,SalePrice)
 scaledData <- as.matrix(scale(datos))
 ```
+
+### Cluster para datos
+``` {r cluster, echo=FALSE }
+km<-kmeans(scaledData, 3, iter.max = 100)
+fviz_cluster(km, data = scaledData, frame.type = "convex")
+```
