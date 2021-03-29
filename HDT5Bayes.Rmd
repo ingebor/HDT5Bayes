@@ -36,7 +36,7 @@ library(mclust)
 library(fpc)
 library(NbClust)
 library(factoextra)
-library(tidyverse)
+#library(tidyverse)
 library(readr)
 
 library(ppclust)
@@ -211,5 +211,6 @@ confusionMatrix(cm)
 debido a que el modelo tiene un accuracy de0.8087 entonces no existen problemas de overfitting
 
 
-
+## COMPARACIÓN
+Basandonos en el accuracy de la hoja 3 (del árbol de clasificación), es mejor el árbol de clasificación al algoritmo de Bayes. Además en términos de procesamiento, ambos duraron casi la misma cantidad de tiempo, por lo tanto, es mejor el algoritmo del árbol de clasificación al de Bayes.
 
