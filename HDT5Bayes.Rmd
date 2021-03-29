@@ -169,3 +169,13 @@ scaledData <- as.matrix(scale(datos))
 km<-kmeans(scaledData, 3, iter.max = 100)
 fviz_cluster(km, data = scaledData, frame.type = "convex")
 ```
+
+## Uso del cluster
+``` {r usoCluster, echo=FALSE }
+datosCasas$Group <- km$cluster
+head(datosCasas)
+set.seed(12345)
+# Definir Variable SalePrice como categorica
+datosCasas$Group <- factor(datosCasas$Group,levels=c(1,2,3),labels=c("Barata","Media","Cara"))
+```
+### S
